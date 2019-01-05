@@ -1,19 +1,18 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: evgeniy
- * Date: 05.01.19
- * Time: 17:34
- */
+
 
 namespace App\Controller;
 
+
+use App\Entity\UserRegistration;
 use App\Form\UserType;
-use App\Entity\User;
+use App\Security\StubAuthenticator;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
 
 class RegistrationController extends AbstractController
 {
@@ -42,11 +41,11 @@ class RegistrationController extends AbstractController
             // ... do any other work - like sending them an email, etc
             // maybe set a "flash" success message for the user
 
-            return $this->redirectToRoute('replace_with_some_route');
+            return $this->redirectToRoute('/register');
         }
 
         return $this->render(
-            'registration/register.html.twig',
+            'register.html.twig',
             array('form' => $form->createView())
         );
     }

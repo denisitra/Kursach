@@ -11,7 +11,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * @UniqueEntity(fields="email", message="Email already taken")
  * @UniqueEntity(fields="username", message="Username already taken")
  */
-class User implements UserInterface
+class UserRegistration implements UserInterface
 {
     /**
      * @ORM\Id
@@ -37,6 +37,9 @@ class User implements UserInterface
      * @Assert\NotBlank()
      * @Assert\Length(max=4096)
      */
+
+
+
     private $plainPassword;
 
     /**
@@ -58,6 +61,7 @@ class User implements UserInterface
     }
 
     // other properties and methods
+
 
     public function getEmail()
     {
