@@ -1,6 +1,5 @@
 security:
 
-
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     encoders:
         App\Entity\User:
@@ -27,9 +26,14 @@ security:
             anonymous: true
             provider: our_db_provider
 
+
+
             # activate different ways to authenticate
 
             http_basic: true
+            guard:
+                authenticators:
+                    - App\Security\LoginFormAuthenticator
             # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
 
             # form_login: true
