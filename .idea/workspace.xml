@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="23064fed-2c93-4cac-b983-04cd7bfd2ffe" name="Default Changelist" comment="RegisterController">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entity/UserRegistration.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="23064fed-2c93-4cac-b983-04cd7bfd2ffe" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,13 +25,25 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Entity/UserRegistration.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" selection-start-line="1" selection-end-line="1" />
+            <state relative-caret-position="379">
+              <caret line="90" lean-forward="true" selection-start-line="90" selection-end-line="90" />
               <folding>
                 <element signature="e#30#62#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Form/UserType.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+              <folding>
+                <element signature="e#111#131#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -72,7 +80,6 @@
         <option value="$PROJECT_DIR$/src/Controller/NameController.php" />
         <option value="$PROJECT_DIR$/src/AppKernel1.php" />
         <option value="$PROJECT_DIR$/config/packages/translation.yaml" />
-        <option value="$PROJECT_DIR$/src/Form/UserType.php" />
         <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/src/Entity/User.php" />
         <option value="$PROJECT_DIR$/config/packages/security.yaml" />
@@ -86,6 +93,7 @@
         <option value="$PROJECT_DIR$/src/Controller/RegisterController.php" />
         <option value="$PROJECT_DIR$/src/Controller/RegistrationController.php" />
         <option value="$PROJECT_DIR$/src/Entity/UserRegistration.php" />
+        <option value="$PROJECT_DIR$/src/Form/UserType.php" />
       </list>
     </option>
   </component>
@@ -343,11 +351,25 @@
       <option name="project" value="LOCAL" />
       <updated>1546698349739</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="RegisterController">
+      <created>1546698717681</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1546698717681</updated>
+    </task>
+    <task id="LOCAL-00005" summary="RegisterController">
+      <created>1546698822864</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1546698822864</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25270000" />
+    <option name="totallyTimeSpent" value="25392000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -360,7 +382,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21416713" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -442,7 +463,6 @@
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Entity/RegistrationFormType.php" />
-    <entry file="file://$PROJECT_DIR$/src/Form/UserType.php" />
     <entry file="file://$PROJECT_DIR$/config/packages/prod/doctrine.yaml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
@@ -601,10 +621,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Entity/UserRegistration.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        <state relative-caret-position="379">
+          <caret line="90" lean-forward="true" selection-start-line="90" selection-end-line="90" />
           <folding>
             <element signature="e#30#62#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Form/UserType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+          <folding>
+            <element signature="e#111#131#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
