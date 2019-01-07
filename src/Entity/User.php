@@ -25,6 +25,15 @@ class User implements UserInterface
     private $email;
 
     /**
+     * @ORM\Column(type="string", length=180, unique=true)     */
+    private $firstName;
+
+
+    /**
+     * @ORM\Column(type="string", length=180, unique=true)     */
+    private $lastName;
+
+    /**
      * @ORM\Column(type="json")
      */
     private $roles = [];
@@ -41,11 +50,54 @@ class User implements UserInterface
         return $this->id;
     }
 
+    /**
+     * @return string|null
+     */
+    public function getFirstName() : ?string
+    {
+        return $this->firstName;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function setFirstName(string $firstName) : self
+    {
+        $this->firstName= $firstName;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getLastName() : ?string
+    {
+        return $this->lastName;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function setLastName(string $lastName) : self
+    {
+        $this->lastName= $lastName;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
     public function getEmail(): ?string
     {
         return $this->email;
     }
 
+    /**
+     * @param string $email
+     * @return User
+     */
     public function setEmail(string $email): self
     {
         $this->email = $email;
@@ -111,7 +163,7 @@ class User implements UserInterface
     public function eraseCredentials()
     {
         // If you store any temporary, sensitive data on the user, clear it here
-        // $this->plainPassword = null;
+         //$this->Password = null;
     }
 
 }

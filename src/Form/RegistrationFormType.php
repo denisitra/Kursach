@@ -12,11 +12,12 @@ use Symfony\Component\Validator\Constraints\Length;
 
 class RegistrationFormType extends AbstractType
 {
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
             ->add('email')
-            ->add('plainPassword', PasswordType::class, [
+            ->add('Password', PasswordType::class, [
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
                 'mapped' => false,
@@ -32,6 +33,8 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
+            ->add('firstName')
+            ->add('lastName')
         ;
     }
 

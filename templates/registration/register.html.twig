@@ -1,14 +1,52 @@
-{% extends 'base.html.twig' %}
+{% extends "base.html.twig" %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Registration{% endblock %}
 
 {% block body %}
-    <h1>Register</h1>
 
     {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword) }}
 
-        <button class="btn">Register</button>
+
+    <div class="form-group">
+        {{ form_errors(registrationForm.email) }}
+        <div class="col-sm-12">
+            {{ form_label(registrationForm.email) }}
+            {{ form_widget(registrationForm.email, {'type': 'email'}) }}
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        {{ form_errors(registrationForm.Password) }}
+        <div class="col-sm-12">
+            {{ form_label(registrationForm.Password) }}
+            {{ form_widget(registrationForm.Password, { 'attr': {'class': 'form-control'} }) }}
+        </div>
+    </div>
+    <div class="form-group">
+
+
+    <div class="form-group">
+
+        {{ form_errors(registrationForm.firstName) }}
+        <div class="col-sm-12">
+            {{ form_label(registrationForm.firstName) }}
+            {{ form_widget(registrationForm.firstName, { 'attr': {'class': 'form-control'} }) }}
+        </div>
+    </div>
+    <div class="form-group">
+
+
+        {{ form_errors(registrationForm.lastName) }}
+        <div class="col-sm-12">
+            {{ form_label(registrationForm.lastName) }}
+            {{ form_widget(registrationForm.lastName, { 'attr': {'class': 'form-control'} }) }}
+        </div>
+    </div>
+
+
+    <button type="submit" class="btn btn-default">Register</button>
+
     {{ form_end(registrationForm) }}
+
 {% endblock %}
