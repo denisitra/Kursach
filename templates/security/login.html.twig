@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
-
 {% block title %}Log in{% endblock %}
-
 {% block body %}
+    {% include  "header.html.twig"%}
 
+    <form method="post">
     <div class="container col-lg-2" style="margin-top: 150px" >
         <h1 class="h3 mb-3 font-weight-normal" style="margin-left: 46px">Please sign in</h1>
         <label for="inputEmail" class="sr-only">Email</label>
@@ -17,7 +17,7 @@
 
             <br><div class="checkbox mb-4">
                 <label>
-                    <input type="checkbox" name="_remember_me"> Remember me
+                    <input type="checkbox" name="_remember_me">  Remember me
                 </label>
             </div>
 
@@ -26,4 +26,7 @@
             Sign in
         </button>
     </div>
+</form>
+    {% include  "footer.html.twig"%}
+
 {% endblock %}
