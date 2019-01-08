@@ -1,0 +1,18 @@
+.footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+.den{
+    background-color: rgb(52,58,64);
+    height: 60px;
+    width: 100%;
+}
+.text{
+    text-align: center;
+}
+.footer_name{
+    font-size: 21px;
+    color: antiquewhite;
+}
