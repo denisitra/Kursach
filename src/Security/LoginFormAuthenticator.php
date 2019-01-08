@@ -86,7 +86,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
         }
 
         // redirect to some "task" route - of wherever you want
-        return new RedirectResponse($this->router->generate('task'));
+        return new RedirectResponse($this->router->generate('home'));
     }
 
     protected function getLoginUrl()
