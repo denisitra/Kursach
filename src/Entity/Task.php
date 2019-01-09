@@ -11,31 +11,79 @@ class Task
     /**
      * @Assert\NotBlank
      */
-    protected $task;
+    protected $headline;
 
     /**
      * @Assert\NotBlank
-     * @Assert\Type("\DateTime")
      */
-    protected $dueDate;
+    protected $teaser;
 
-    public function getTask()
+    /**
+     * @Assert\NotBlank
+     */
+    protected $text;
+
+    /**
+     * @Assert\NotBlank
+     */
+    protected $image;
+
+    /**
+     * @Assert\NotBlank
+     */
+    protected $tags;
+
+
+    public function getHeadline()
     {
-        return $this->task;
+        return $this->headline;
     }
 
-    public function setTask($task)
+    public function setHeadline($headline)
     {
-        $this->task = $task;
+        $this->headline = $headline;
     }
 
-    public function getDueDate()
+
+    public function getTeaser()
     {
-        return $this->dueDate;
+        return $this->teaser;
     }
 
-    public function setDueDate(\DateTime $dueDate = null)
+    public function setTeaser($teaser)
     {
-        $this->dueDate = $dueDate;
+        $this->teaser = $teaser;
     }
+
+    public function getText()
+    {
+        return $this->text;
+    }
+
+    public function setText($text)
+    {
+        $this->text = $text;
+    }
+
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    public function setImage($image)
+    {
+        $this->image = $image;
+    }
+
+    public function getTags()
+    {
+        return $this->tags;
+    }
+
+    public function setTags($tags)
+    {
+        $this->tags = $tags;
+    }
+
+
 }
