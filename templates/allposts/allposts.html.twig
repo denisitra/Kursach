@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}All posts{% endblock %}
+
+{% block head_css %}
+{% endblock %}
+{% block body %}
+
+    {% include  "header.html.twig"%}
+    <h1 class="text-center"> All posts </h1><br>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th scope="col">№</th>
+            <th scope="col">Headline</th>
+            <th scope="col">Teaser</th>
+            <th scope="col">Text</th>
+            <th scope="col">Tags</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for post in posts %}
+        <tr>
+            <td>{{ post.id }}</td>
+
+            <td>{{ post.headline }}</td>
+            <td>{{ post.teaser }}</td>
+            <td>{{ post.text }}</td>
+            <td>{{ post.tags }}</td>
+        </tr>
+       {% endfor %}
+        </tbody>
+    </table>
+
+
+
+
+
+
+    {% include  "footer.html.twig"%}
+
+
+{% endblock %}

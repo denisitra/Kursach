@@ -16,3 +16,13 @@
     font-size: 21px;
     color: antiquewhite;
 }
+.mr-auto {
+    margin-top: 5px !important;
+}
+.ml-auto {
+    margin-top: 5px !important;
+}
+.open-slide
+{
+    margin-top: -3px !important;
+}
