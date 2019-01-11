@@ -1,10 +1,10 @@
 {% extends 'base.html.twig' %}
 
-    {% block body %}
+{% block body %}
 
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 
-            <nav class="navbar">
+        <nav class="navbar">
 <span class="open-slide">
 <a href="#" onclick="openSlideMenu()">
 <svg width="30" height="30">
@@ -14,38 +14,38 @@
 </svg>
 </a>
 </span>
-            </nav>
-
-            <div id="side-menu" class="side-nav">
-                <a href="#" class="btn-close" onclick="closeSlideMenu()">&times;</a>
-                <a href="#">{% trans %} All posts {% endtrans %}</a>
-                <a href="/popular">{% trans %} Popular {% endtrans %}</a>
-                <a href="#">{% trans %} Preferences {% endtrans %}</a>
-                <a href="#">{% trans %} My posts {% endtrans %}</a>
-                <a href="/post">{% trans %} Create new post {% endtrans %}</a>
-            </div>
-
-            <a class="navbar-brand" href="/home">{% trans %} BloggerClub {% endtrans %}</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar1" aria-controls="navbar1" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbar1">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/login">{% trans %} Log in {% endtrans %}<span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="register">{% trans %} Registration {% endtrans %}</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/my_profile">{% trans %} My profile {% endtrans %}</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">{% trans %} Administrator {% endtrans %}</a>
-                    </li>
-                </ul>
-            </div>
         </nav>
 
-    {% endblock %}
+        <div id="side-menu" class="side-nav">
+            <a href="#" class="btn-close" onclick="closeSlideMenu()">&times;</a>
+            <a href="#">{% trans %} All posts {% endtrans %}</a>
+            <a href="/popular">{% trans %} Popular {% endtrans %}</a>
+            <a href="#">{% trans %} Preferences {% endtrans %}</a>
+            <a href="#">{% trans %} My posts {% endtrans %}</a>
+            <a href="/post">{% trans %} Create new post {% endtrans %}</a>
+        </div>
+
+        <a class="navbar-brand" href="/home">{% trans %} BloggerClub {% endtrans %}</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar1" aria-controls="navbar1" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbar1">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/login">{% trans %} Log in {% endtrans %}<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="register">{% trans %} Registration {% endtrans %}</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/my_profile">{% trans %} My profile {% endtrans %}</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">{% trans %} Administrator {% endtrans %}</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+{% endblock %}
