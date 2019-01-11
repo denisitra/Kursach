@@ -6,7 +6,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\TaskRepository")
  */
 class Task
 {
@@ -120,6 +120,17 @@ class Task
     {
         $this->tags = $tags;
     }
+
+    /**
+     * @return integer|null
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+
+
 
 
 }

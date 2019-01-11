@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Task;
+use App\Repository\TaskRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -48,5 +49,27 @@ class DefaultController extends AbstractController
         return $this -> render ( 'new.html.twig' , array (
             'form' => $form->createView(),
         ));
+
     }
+
+    /**
+     * @param $id
+     * @param TaskRepository $taskRepository
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @Route("/posts/{id}", name="posts_show")
+     */
+    public function show($id,TaskRepository $taskRepository)
+    {
+        $posts = $taskRepository->findAll(['id'=>$id]);
+
+        if (!$posts) {
+            throw $this->createNotFoundException(
+                'No product found for id '.$id
+            );
+        }
+
+        return $this->render('allposts/allposts.html.twig', ['posts' => $posts]);
+
+    }
+
 }
