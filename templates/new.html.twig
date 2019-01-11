@@ -1,56 +1,51 @@
 {% extends "base.html.twig" %}
-{% block title %}Registration{% endblock %}
+
+{% block title %}Create new post{% endblock %}
 
 {% block body %}
 
-    {% include  "header.html.twig"%}
+{% include  "header.html.twig"%}
 
-    {{ form_start(form) }}
+{{ form_start(form) }}
 
-    <div class="container col-lg-2" style="margin-top: 120px" >
+<div class="container col-lg-2" style="margin-top: 100px" >
 
+    <h2 class="text-center"><em>{% trans %} Create Post {% endtrans %}</em> </h2><br>
 
-        <h2 class="text-center"><em> Create Post </em> </h2><br>
-
-
-        <div class="form-group">
-            {{ form_errors(form.headline) }}
-            {{ form_label(form.headline) }}
-            {{ form_widget(form.headline, { 'attr': {'class': 'form-control'} }) }}
-        </div>
-
-
-        <div class="form-group">
-            {{ form_errors(form.teaser) }}
-            {{ form_label(form.teaser) }}
-            {{ form_widget(form.teaser, { 'attr': {'class': 'form-control'} }) }}
-        </div>
-
-
-        <div class="form-group">
-            {{ form_errors(form.text) }}
-            {{ form_label(form.text) }}
-            {{ form_widget(form.text, { 'attr': {'class': 'form-control'} }) }}
-        </div>
-
-
-        <div class="form-group">
-            {{ form_errors(form.tags) }}
-            {{ form_label(form.tags) }}
-            {{ form_widget(form.tags, { 'attr': {'class': 'form-control'} }) }}
-        </div>
-
-
-        <div class="form-group">
-            {{ form_widget(form.image) }}
-        </div>
-
-        <button type="submit" style="margin-left: 85px" class="btn btn-primary"> Create </button>
-
-
+    <div class="form-group">
+        {{ form_errors(form.headline) }}
+        {{ form_label(form.headline) }}
+        {{ form_widget(form.headline, { 'attr': {'class': 'form-control'} }) }}
     </div>
-    {{ form_end(form) }}
 
-    {% include  "footer.html.twig"%}
+    <div class="form-group">
+        {{ form_errors(form.teaser) }}
+        {{ form_label(form.teaser) }}
+        {{ form_widget(form.teaser, { 'attr': {'class': 'form-control'} }) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_errors(form.text) }}
+        {{ form_label(form.text) }}
+        {{ form_widget(form.text, { 'attr': {'class': 'form-control'} }) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_errors(form.tags) }}
+        {{ form_label(form.tags) }}
+        {{ form_widget(form.tags, { 'attr': {'class': 'form-control'} }) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_widget(form.image) }}
+    </div>
+
+    <button type="submit" style="margin-left: 85px" class="btn btn-primary">{% trans %} Create {% endtrans %}</button>
+
+</div>
+
+{{ form_end(form) }}
+
+{% include  "footer.html.twig"%}
 
 {% endblock %}

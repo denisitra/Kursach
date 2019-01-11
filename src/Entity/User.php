@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -45,6 +47,15 @@ class User implements UserInterface
     private $password;
 
 
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $About;
+
+
+
+
     public function getId(): ?int
     {
         return $this->id;
@@ -77,7 +88,8 @@ class User implements UserInterface
     }
 
     /**
-     * @return string|null
+     * @param string $lastName
+     * @return User
      */
     public function setLastName(string $lastName) : self
     {
@@ -164,6 +176,18 @@ class User implements UserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
          //$this->Password = null;
+    }
+
+    public function getAbout(): ?string
+    {
+        return $this->About;
+    }
+
+    public function setAbout(?string $About): self
+    {
+        $this->About = $About;
+
+        return $this;
     }
 
 }

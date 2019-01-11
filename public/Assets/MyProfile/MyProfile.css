@@ -1,0 +1,53 @@
+.my_profile{
+    margin-top: 25px;
+    text-align: center;
+    font-size: 45px;
+    width: 100%;
+}
+.text_area{
+    float: left;
+    width: 100%;
+    margin-top: 40px;
+}
+.button {
+    margin-top: 90px;
+    margin-left: 15px;
+    font-size: 15px;
+    background-color: rgb(52, 58, 64);
+    color: white;
+    border-radius: 10px;
+    float: left;
+}
+.button:hover{
+    background-color: #474A4D;
+    color: white;
+}
+.button:active{
+    background-color: rgb(52,58,64);
+    color: white;
+}
+.change_password{
+    margin-left: 78%;
+ }
+.name_change_password{
+    margin-bottom: 10px;
+    font-size: 25px;
+}
+.button_for_change_password{
+    margin-top: 10px;
+    margin-left: 55px;
+    border-radius: 9px;
+    background-color: rgb(52,58,64);
+    color: white;
+}
+.button_for_change_password:hover{
+    background-color: #474A4D;
+    color: white;
+}
+.button_for_change_password:active{
+    background-color: rgb(52,58,64);
+    color: white;
+}
+.table_follow_user{
+    margin-top: 30px;
+}

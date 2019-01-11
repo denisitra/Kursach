@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Form;
 
 use App\Entity\User;
@@ -14,7 +16,7 @@ use Symfony\Component\Validator\Constraints\Length;
 class RegistrationFormType extends AbstractType
 {
 
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $user)
     {
         $builder
             ->add('email', EmailType::class)
