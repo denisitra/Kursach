@@ -1,4 +1,10 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: denis
+ * Date: 11.01.19
+ * Time: 3:30
+ */
 
 declare(strict_types=1);
 
@@ -8,16 +14,16 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-class HomePageController extends AbstractController
+class PopularController extends AbstractController
 {
     /**
      * @return Response
      * @throws \Exception
-     * @Route("/home",name="home")
+     * @Route("/popular",name="popular")
      */
     public function number()
     {
-        return $this->render('homepage/homepage.html.twig');
+        return $this->render('Popular/Popular.html.twig');
     }
 }
 

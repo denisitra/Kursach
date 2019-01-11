@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Security;
 
 use App\Entity\User;
@@ -86,7 +88,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
         }
 
         // redirect to some "task" route - of wherever you want
-        return new RedirectResponse($this->router->generate('home'));
+        return new RedirectResponse($this->router->generate('post'));
     }
 
     protected function getLoginUrl()
