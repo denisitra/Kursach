@@ -15,7 +15,7 @@ class MyProfileController extends AbstractController
     /**
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
-     * @Route("my_profile", name="my_profile")
+     * @Route("/my_profile", name="my_profile")
      */
     public function new ( Request $request )
     {

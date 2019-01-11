@@ -123,4 +123,11 @@ class Task
         $this->tags = $tags;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 }
