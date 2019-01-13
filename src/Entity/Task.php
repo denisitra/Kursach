@@ -147,4 +147,11 @@ class Task
 
 
 
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 }

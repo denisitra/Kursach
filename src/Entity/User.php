@@ -55,6 +55,7 @@ class User implements UserInterface
      */
     private $About;
 
+
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Task", mappedBy="user", orphanRemoval=true)
      */
@@ -64,6 +65,7 @@ class User implements UserInterface
     {
         $this->task = new ArrayCollection();
     }
+
 
 
 
@@ -232,5 +234,6 @@ class User implements UserInterface
 
         return $this;
     }
+
 
 }

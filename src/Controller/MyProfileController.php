@@ -38,7 +38,7 @@ class MyProfileController extends AbstractController
             $entityManager->flush();
 
             return $this -> redirectToRoute ( '/my_profile' );
-        }
+
         return $this->render('/MyProfile/MyProfile.html.twig', array (
             'registrationForm' => $form->createView(),
         ));
