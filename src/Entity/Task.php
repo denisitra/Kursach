@@ -8,7 +8,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\TaskRepository")
  */
 class Task
 {
@@ -34,7 +34,7 @@ class Task
 
     /**
      * @Assert\NotBlank
-     * @ORM\Column(type="string", length=1800)
+     * @ORM\Column(type="string", length=10000)
      */
     protected $text;
 
@@ -48,6 +48,12 @@ class Task
      * @ORM\Column(type="string", length=180)
      */
     protected $tags;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="task")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $user;
 
     /**
      * @return string|null
@@ -122,5 +128,23 @@ class Task
     {
         $this->tags = $tags;
     }
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function getUser(): User
+    {
+        return $this->user;
+    }
+
+    public function setUser(User $user): self
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+
 
 }

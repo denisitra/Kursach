@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Popular{% endblock %}
+
+
+{% block body %}
+
+    {% include  "header.html.twig"%}
+
+    <main>
+    <h1 class="table_follow_user text-center">{% trans %} Popular posts {% endtrans %}</h1><br>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th scope="col">№</th>
+            <th scope="col">Headline</th>
+            <th scope="col">Teaser</th>
+            <th scope="col">Text</th>
+            <th scope="col">Tags</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Denis</td>
+            <td>Smojet</td>
+            <td>Vse</td>
+            <td>Sdelat'</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+            <td>sosi</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+            <td>sosi</td>
+        </tr>
+
+        </tbody>
+    </table>
+    </main>
+
+    {% include  "footer.html.twig"%}
+
+
+{% endblock %}
