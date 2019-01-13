@@ -5,7 +5,9 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Entity\Task;
+use App\Entity\User;
 use App\Repository\TaskRepository;
+use phpDocumentor\Reflection\Types\This;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -24,9 +26,9 @@ class DefaultController extends AbstractController
     public function new ( Request $request )
     {
         // just setup a fresh $task object (remove the dummy data)
-        $task = new Task ();
+        $tsk = new Task ();
 
-        $form = $this -> createFormBuilder ( $task )
+        $form = $this -> createFormBuilder ( $tsk )
             -> add ( 'headline' , TextType :: class)
             -> add ( 'teaser' , TextType :: class)
             -> add ( 'text' , TextareaType :: class)
@@ -36,14 +38,14 @@ class DefaultController extends AbstractController
 
         $form -> handleRequest ( $request );
 
-        if ( $form -> isSubmitted () && $form -> isValid ()) {
+        if ( $form -> isSubmitted () && $form -> isValid ())
+        {
 
-            $task = $form -> getData ();
+            $tsk->setUser($this->getUser());
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($tsk);
+            $entityManager->flush();
 
-
-             $entityManager = $this->getDoctrine()->getManager();
-             $entityManager->persist($task);
-             $entityManager->flush();
 
             return $this -> redirectToRoute ( 'post' );
         }
@@ -73,5 +75,6 @@ class DefaultController extends AbstractController
         return $this->render('allposts/allposts.html.twig', ['posts' => $posts]);
 
     }
+
 
 }
