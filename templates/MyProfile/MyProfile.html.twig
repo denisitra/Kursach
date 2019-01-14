@@ -6,9 +6,9 @@
 
 {% include  "header.html.twig"%}
 
+    <main>
 {{ form_start(registrationForm) }}
-<main>
-<div class="container col-lg-4">
+ <div class="container col-lg-4">
     <div class="my_profile">
         <label> Denis </label>
         <label> Bogachev </label>
@@ -17,7 +17,7 @@
     <div class="text_area">
         {{ form_errors(registrationForm.About) }}
         {{ form_label(registrationForm.About) }}
-        {{ form_widget(registrationForm.About, { 'attr': {'class': 'form-control'} }) }}
+        {{ form_widget(registrationForm.About, { 'attr': {'class': 'form-control'}} ) }}
     </div>
 </div>
 
@@ -69,7 +69,9 @@
         </tbody>
     </table>
     </div>
-</main>
-{% include  "footer.html.twig"%}
+
+    </main>
+
+ {% include  "footer.html.twig"%}
 
 {% endblock %}

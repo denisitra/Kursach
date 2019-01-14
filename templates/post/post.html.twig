@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Post{% endblock %}
+
+{% block head_css %}
+{% endblock %}
+{% block body %}
+
+    {% include  "header.html.twig"%}
+
+
+    <main>
+    <hr>
+    <div class="container ">
+        <div >
+
+            <div  >
+                <div class="project project-default">
+                    <div class="shape">
+                        <div class="shape-text">
+                            Post
+                        </div>
+
+
+
+                    </div>
+                    <div>
+                        <h3 class="headline">
+                            {{ post.headline }}
+                        </h3>
+                        <span class="teaser badge badge-secondary">{{ post.teaser }}</span>
+                        <span class="tags badge badge-secondary">{{ post.tags }}</span>
+
+
+
+                        <p class="text">
+                            {{ post.text }}
+
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </main>
+     {% include  "footer.html.twig"%}
+
+
+{% endblock %}
