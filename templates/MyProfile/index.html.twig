@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Qwerty index{% endblock %}
+
+{% block body %}
+    <h1>Qwerty index</h1>
+
+    {% for UserInfo in qwerties %}
+
+        <div>
+            <label> {{ UserInfo.firstName }} </label>
+            <label> {{ UserInfo.lastName }} </label>
+
+            <a href="{{ path('edit', {'id': UserInfo.id}) }}">Edit</a>
+
+        </div>
+
+    {% endfor %}
+
+{% endblock %}

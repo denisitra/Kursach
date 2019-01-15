@@ -8,34 +8,27 @@
 
 .shape-text{
     color:#fff; font-size:12px; font-weight:bold; position:relative; right:-40px; top:2px; white-space: nowrap;
-    -ms-transform:rotate(30deg); /* IE 9 */
     -o-transform: rotate(360deg);  /* Opera 10.5 */
     -webkit-transform:rotate(30deg); /* Safari and Chrome */
     transform:rotate(30deg);
 }
 
 .project {
-    min-height:600px;
-    height:auto;
-    width: 500px;
+    min-height:80%;
 }
 
 .project{
-    background:#fff; border:1px solid #ddd; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); margin-left: 300px; margin-top: 100px  ; overflow:hidden;
+    background:#fff; border:1px solid #ddd; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); overflow:hidden;
     padding: 10px;
 }
 
 
-.project-default {    border-color: #999999; }
+.project-default { border-color: #999999; }
 .project-default .shape{
     border-color: transparent #999999 transparent transparent;
     border-color: rgba(255,255,255,0) #999999 rgba(255,255,255,0) rgba(255,255,255,0);
 }
 
-
-.project-content {
-    padding:0 20px 10px;
-}
 .headline
 {
     font-size:30px;
@@ -44,12 +37,19 @@
 .teaser{
     display: block;
     font-size: 17px;
-    margin-top: 13px;
-}
+ }
 .tags{
     background-color: #343A40;
-    margin-top: 10px;
+ }
+.homepage_container{
+    float: left;
+    width: 25%;
+    margin-top: 3%;
+    margin-left: 5%;
+
 }
-.text{
-    margin-top: 20px;
+.second_homepage{
+    margin-left: 59%;
+    width: 35%;
+    margin-top: 3%;
 }

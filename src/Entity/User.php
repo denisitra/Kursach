@@ -29,12 +29,12 @@ class User implements UserInterface
     private $email;
 
     /**
-     * @ORM\Column(type="string", length=180, unique=true)     */
+     * @ORM\Column(type="string", length=180)     */
     private $firstName;
 
 
     /**
-     * @ORM\Column(type="string", length=180, unique=true)     */
+     * @ORM\Column(type="string", length=180)     */
     private $lastName;
 
     /**
@@ -59,6 +59,11 @@ class User implements UserInterface
      * @ORM\OneToMany(targetEntity="App\Entity\Task", mappedBy="user", orphanRemoval=true)
      */
     private $task;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $is_blogger;
 
     public function __construct()
     {
@@ -144,11 +149,18 @@ class User implements UserInterface
      */
     public function getRoles(): array
     {
-        $roles = $this->roles;
-        // guarantee every user at least has ROLE_USER
+        /*$roles = $this->roles;
+        // guarantee every user at least has ROLE_GUEST
         $roles[] = 'ROLE_USER';
 
-        return array_unique($roles);
+        return array_unique($roles);    */
+
+        if ($this->user->getIsBlogger == true){
+            return ['ROLE_USER'];
+        }
+        else{
+            return ['ROLE_BLOGGER'];
+        }
     }
 
     public function setRoles(array $roles): self
@@ -229,6 +241,18 @@ class User implements UserInterface
                 $task->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getIsBlogger(): ?bool
+    {
+        return $this->is_blogger;
+    }
+
+    public function setIsBlogger(?bool $is_blogger): self
+    {
+        $this->is_blogger = $is_blogger;
 
         return $this;
     }

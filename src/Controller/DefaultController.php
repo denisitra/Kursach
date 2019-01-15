@@ -19,7 +19,7 @@ class DefaultController extends AbstractController
     /**
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
-     * @Route("/post", name="post")
+     * @Route("/create_post", name="post")
      */
     public function new ( Request $request )
     {

@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}My posts{% endblock %}
+
+{% block head_css %}
+{% endblock %}
+{% block body %}
+
+    {% include "header.html.twig"%}
+
+    {% for myv in my %}
+
+        <div style="margin-left: 6%" class="homepage_container">
+            <div class="project project-default">
+                <div class="shape">
+                    <div class="shape-text">
+                        Post
+                    </div>
+                </div>
+                <div>
+                    <h3 class="headline">
+                        <a href="/post/{{ myv.id }}"> {{ myv.headline }} </a>
+                    </h3>
+                    <span class="teaser badge badge-secondary"> {{ myv.teaser }}</span>
+                    <span class="tags badge badge-secondary"> {{ myv.tags }}</span>
+                    <p class="text">
+                        {{ myv.text }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+    {% include "footer.html.twig"%}
+
+{% endblock %}

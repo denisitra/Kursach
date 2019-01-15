@@ -4,74 +4,41 @@
 
 {% block body %}
 
-{% include  "header.html.twig"%}
+    {% include "header.html.twig"%}
 
-    <main>
-{{ form_start(registrationForm) }}
- <div class="container col-lg-4">
-    <div class="my_profile">
-        <label> Denis </label>
-        <label> Bogachev </label>
+    {{ form_start(registrationForm) }}
+    <div class="container col-lg-4">
+        <div class="my_profile">
+            <label>{{ UserInfo.firstName }} </label>
+            <label>{{ UserInfo.lastName }} </label>
+            <a href="/edit/{{ UserInfo.id}}">Edit</a>
+        </div>
+
+        <div class="text_area">
+            {{ form_errors(registrationForm.About) }}
+            {{ form_label(registrationForm.About) }}
+            {{ form_widget(registrationForm.About, { 'attr': {'class': 'form-control'} }) }}
+        </div>
     </div>
 
-    <div class="text_area">
-        {{ form_errors(registrationForm.About) }}
-        {{ form_label(registrationForm.About) }}
-        {{ form_widget(registrationForm.About, { 'attr': {'class': 'form-control'}} ) }}
-    </div>
-</div>
+    <button class="button btn btn-lg" type="submit">
+        {% trans %} Add {% endtrans %}
+    </button>
 
-<button class="button btn btn-lg" type="submit">
-    {% trans %} Add {% endtrans %}
-</button>
+    {{ form_end(registrationForm) }}
 
-{{ form_end(registrationForm) }}
+    <div class="change_password">
+        <label class="name_change_password">{% trans %} Change password {% endtrans %}</label>
+        <p>
+            <input type="text" placeholder=" last password" required>
 
-     <div class="change_password">
-       <label class="name_change_password">{% trans %} Change password {% endtrans %}</label>
-       <p>
-           <input  type="text" placeholder=" last password" required>
-
-       </p>
-         <input  type="text" placeholder=" new password" required><br>
-         <button class="button_for_change_password btn"   type="submit">
-             {% trans %} Change {% endtrans %}
-         </button>
-    </div>
-    <h1 class="table_follow_user text-center">{% trans %} Followed users {% endtrans %}</h1><br>
-    <div class="container col-lg" style="width: 60%" >
-
-    <table class="table table-hover">
-        <thead>
-        <tr>
-            <th scope="col">№</th>
-            <th scope="col">Author name</th>
-            <th scope="col">Follow</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Denis</td>
-            <td>Smojet</td>
-        </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td>Mark</td>
-            <td>Otto</td>
-        </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-        </tr>
-
-        </tbody>
-    </table>
+        </p>
+        <input type="text" placeholder=" new password" required><br>
+        <button class="button_for_change_password btn" type="submit">
+            {% trans %} Change {% endtrans %}
+        </button>
     </div>
 
-    </main>
-
- {% include  "footer.html.twig"%}
+    {% include "footer.html.twig"%}
 
 {% endblock %}
