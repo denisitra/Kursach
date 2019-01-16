@@ -6,34 +6,34 @@
 {% endblock %}
 {% block body %}
 
-    {% include  "header.html.twig"%}
-    <main>
-    <h1 class="text-center"> All posts </h1><br>
-    <table class="table table-hover">
-        <thead>
-        <tr>
-            <th scope="col">№</th>
-            <th scope="col">Headline</th>
-            <th scope="col">Teaser</th>
-            <th scope="col">Tags</th>
-            <th scope="col">Author</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for post in posts %}
-        <tr>
-             <td>{{ post.id }}</td>
+    {% include "header.html.twig"%}
 
-            <td><a href="/post/{{ post.id }}"> {{ post.headline }} </a></td>
-            <td>{{ post.teaser }}</td>
-            <td>{{ post.tags }}</td>
-            <td>{{ post.user.firstName }}</td>
-        </tr>
-       {% endfor %}
-        </tbody>
-    </table>
-    </main>
-    {% include  "footer.html.twig"%}
+    {% for post in posts %}
+        <div style="margin-left: 6%" class="homepage_container">
+            <div class="project project-default">
+                <div class="shape">
+                    <div class="shape-text">
+                        Post
+                    </div>
+                </div>
+                <div>
+                    <h3 class="headline">
+                        <a href="/post/{{ post.id }}"> {{ post.headline }} </a>
+                    </h3>
+                    <span class="teaser badge badge-secondary">{{ post.teaser }}</span>
+                    <span class="tags badge badge-secondary">{{ post.tags }}</span>
+                    <div class="box">
+                        <div>
+                            <p>
+                                {{ post.text }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
 
+    {% include "footer.html.twig"%}
 
 {% endblock %}

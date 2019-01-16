@@ -13,13 +13,14 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
+
 class DefaultController extends AbstractController
 {
 
     /**
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
-     * @Route("/post", name="post")
+     * @Route("/create_post", name="post")
      */
     public function new ( Request $request )
     {
@@ -69,10 +70,9 @@ class DefaultController extends AbstractController
                 'No product found for id '.$id
             );
         }
-
         return $this->render('allposts/allposts.html.twig', ['posts' => $posts]);
-
     }
+
 
 
 }

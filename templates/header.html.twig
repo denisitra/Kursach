@@ -7,61 +7,73 @@
 {% block body %}
 
 
-
+<header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 
-
         <nav class="navbar">
-    <span class="open-slide">
-      <a href="#" onclick="openSlideMenu()">
-        <svg width="30" height="30">
-            <path d="M0,5 30,5" stroke="#fff" stroke-width="5"/>
-            <path d="M0,14 30,14" stroke="#fff" stroke-width="5"/>
-            <path d="M0,23 30,23" stroke="#fff" stroke-width="5"/>
-        </svg>
-      </a>
-    </span>
+            <span class="open-slide">
+            <a href="#" onclick="openSlideMenu()">
+            <svg width="30" height="30">
+                <path d="M0,5 30,5" stroke="#fff" stroke-width="5"/>
+                <path d="M0,14 30,14" stroke="#fff" stroke-width="5"/>
+                <path d="M0,23 30,23" stroke="#fff" stroke-width="5"/>
+            </svg>
+            </a>
+            </span>
         </nav>
 
-        <div id="side-menu" class="side-nav">
-            <a href="#" class="btn-close" onclick="closeSlideMenu()">&times;</a>
-            <a href="/posts/1">All posts</a>
-            <a href="/popular">Popular</a>
-            <a href="#">Preferences</a>
-            <a href="#">My posts</a>
-            <a href="/post">Create new post</a>
-        </div>
+         <div id="side-menu" class="side-nav">
+             <a href="#" class="btn-close" onclick="closeSlideMenu()">&times;</a>
+             <a href="/posts/1">All posts</a>
+             <a href="/popular">Popular</a>
+             <a href="#">Preferences</a>
+             <a href="/postss/2">My posts</a>
+             <a href="/create_post">Create new post</a>
+         </div>
 
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar1" aria-controls="navbar1" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
         <div class="collapse navbar-collapse" id="navbar1">
+
             <ul class="navbar-nav mr-auto ">
                 <li class="nav-item active">
                     <a class="nav-link" href="/home">BloggerClub<span class="sr-only">(current)</span></a>
                 </li>
             </ul>
+
+
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="/my_profile">My profile</a>
+                    {% if is_granted('ROLE_USER') %}
+                        <a class="nav-link" href="/my_profile">My profile</a>
+                    {% endif %}
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Administrator</a>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <a class="nav-link" href="#">Administrator</a>
+                    {% endif %}
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="/register">Registration</a>
+                    {% if is_granted('ROLE_USER') == false %}
+                        <a class="nav-link" href="/register">Registration</a>
+                    {% endif %}
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">LogOut<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="/login">Log in<span class="sr-only">(current)</span></a>
+                    {% if is_granted('ROLE_USER') %}
+                        <a class="nav-link" href="/logout">LogOut<span class="sr-only">(current)</span></a>
+                    {% endif %}
                 </li>
+                <li class="nav-item active">
+                    {% if is_granted('ROLE_USER') == false %}
+                        <a class="nav-link" href="/login">Log in<span class="sr-only">(current)</span></a>
+                    {% endif %}
+                </li>
+
             </ul>
 
         </div>
     </nav>
-    <span>
+</header>
 
 {% endblock %}
