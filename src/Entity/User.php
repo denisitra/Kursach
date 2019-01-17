@@ -87,6 +87,7 @@ class User implements UserInterface
         $this->post = new ArrayCollection();
         $this->followers = new ArrayCollection();
         $this->following = new ArrayCollection();
+        $this->likes = new ArrayCollection();
     }
 
 
@@ -115,6 +116,13 @@ class User implements UserInterface
      * @ORM\Column(type="boolean", nullable=true)
      */
     private $is_blogger;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Like", mappedBy="user")
+     */
+    private $likes;
+
+
 
     /**
      * @return string|null
@@ -286,4 +294,37 @@ class User implements UserInterface
 
         return $this;
     }
+
+    /**
+     * @return Collection|Like[]
+     */
+    public function getLikes(): Collection
+    {
+        return $this->likes;
+    }
+
+    public function addLike(Like $like): self
+    {
+        if (!$this->likes->contains($like)) {
+            $this->likes[] = $like;
+            $like->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLike(Like $like): self
+    {
+        if ($this->likes->contains($like)) {
+            $this->likes->removeElement($like);
+            // set the owning side to null (unless already changed)
+            if ($like->getUser() === $this) {
+                $like->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+
 }

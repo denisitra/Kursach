@@ -64,14 +64,24 @@ class Post
      * @ORM\OneToMany(
      *      targetEntity="Comment",
      *      mappedBy="post",
+     *     cascade={"persist"}
      * )
      */
     private $comments;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Like", mappedBy="post")
+     */
+    private $likes;
+
+
 
 
     public function __construct()
     {
         $this->comments = new ArrayCollection();
+        $this->isLiked = new ArrayCollection();
+        $this->likes = new ArrayCollection();
     }
 
 
@@ -174,6 +184,36 @@ class Post
         return $this;
     }
 
+    /**
+     * @return Collection|Like[]
+     */
+    public function getLikes(): Collection
+    {
+        return $this->likes;
+    }
+
+    public function addLike(Like $like): self
+    {
+        if (!$this->likes->contains($like)) {
+            $this->likes[] = $like;
+            $like->setPost($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLike(Like $like): self
+    {
+        if ($this->likes->contains($like)) {
+            $this->likes->removeElement($like);
+            // set the owning side to null (unless already changed)
+            if ($like->getPost() === $this) {
+                $like->setPost(null);
+            }
+        }
+
+        return $this;
+    }
 
 
 }

@@ -64,7 +64,7 @@ class Comment
         return $this->text;
     }
 
-    public function setContent(string $text): void
+    public function setText(string $text): void
     {
         $this->text = $text;
     }

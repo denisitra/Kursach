@@ -7,6 +7,7 @@
 {% block body %}
 
     {% include "header.html.twig"%}
+    {{ dump(like) }}
 
     <main>
         <div class="container ">
@@ -25,11 +26,12 @@
                         <a href="{{ path('following_unfollow', {'id': post.user.id}) }}"
                            class="btn btn-outline-danger">Unfollow</a>
                     {% endif %}
+                    <button type="button" class="btn btn-primary" id="like">Like</button>
                 </div>
 
                 <span class="headline">
-{{ post.headline }}
-</span>
+                   {{ post.headline }}
+                </span>
 
                 <div>
                     <span class="teaser badge badge-secondary">{{ post.teaser }}</span>
@@ -40,9 +42,52 @@
                     </p>
                 </div>
             </div>
+            <div class = "add_comment">
+                <input type = "text">
+                <input type = "submit" value = "Add comment" data-id = {{ post.id }}>
+            </div>
+            <div class = "comment">
+
+            </div>
         </div>
     </main>
+    {% for comment in comments %}
 
+    {% endfor  %}
+
+    <script>
+
+        $('[type="submit"]').click(function () {
+            let data = {
+                text: $('[type="text"]').val()
+            };
+            let id =  $('[type="submit"]').data('id');
+            let url = '/comment/add/'+id;
+            $.ajax({
+                url: url,
+                data: JSON.stringify(data),
+                type: "POST"
+            }).done(function() {
+                alert('done');
+            });
+        })
+
+        $('#like]').click(function () {
+            let data = {
+                like: $(this).data('state')
+            };
+            let id =  $('[type="submit"]').data('id');
+            let url = '/comment/add/'+id;
+            $.ajax({
+                url: url,
+                data: JSON.stringify(data),
+                type: "POST"
+            }).done(function() {
+                alert('done');
+            });
+        })
+
+    </script>
     {% include "footer.html.twig"%}
 
 {% endblock %}
