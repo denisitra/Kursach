@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Repository\TaskRepository;
+use App\Repository\PostRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
@@ -10,14 +10,14 @@ class PostController extends AbstractController
 {
     /**
      * @param $id
-     * @param TaskRepository $taskRepository
+     * @param PostRepository $postRepository
      * @return \Symfony\Component\HttpFoundation\Response
      * @Route("/post/{id}", name="post_show")
      *
      */
-    public function post_show($id,TaskRepository $taskRepository)
+    public function post_show($id,PostRepository $postRepository)
     {
-        $post=$taskRepository->find($id);
+        $post=$postRepository->find($id);
 
         return $this->render("post/post.html.twig",['post'=>$post]);
     }

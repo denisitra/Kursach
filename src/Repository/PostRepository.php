@@ -2,21 +2,21 @@
 
 namespace App\Repository;
 
-use App\Entity\Task;
+use App\Entity\Post;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
- * @method Task|null find($id, $lockMode = null, $lockVersion = null)
- * @method Task|null findOneBy(array $criteria, array $orderBy = null)
- * @method Task[]    findAll()
- * @method Task[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Post|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Post|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Post[]    findAll()
+ * @method Post[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class TaskRepository extends ServiceEntityRepository
+class PostRepository extends ServiceEntityRepository
 {
     public function __construct(RegistryInterface $registry)
     {
-        parent::__construct($registry, Task::class);
+        parent::__construct($registry, Post::class);
     }
 
     /**
@@ -29,15 +29,26 @@ class TaskRepository extends ServiceEntityRepository
 
         $query = $entityManager->createQuery(
             'SELECT p
-        FROM App\Entity\Task id'
+        FROM App\Entity\Post id'
         )->setParameter('headline', $post);
 
         // returns an array of Product objects
         return $query->execute();
     }
 
+    public function findAllByUsers(array $users)
+    {
+        $qb = $this->createQueryBuilder('p');
+
+        return $qb->select('p')
+            ->where('p.user IN (:following)')
+            ->setParameter('following', $users)
+            ->getQuery()
+            ->getResult();
+    }
+
     // /**
-    //  * @return Task[] Returns an array of Product objects
+    //  * @return Post[] Returns an array of Product objects
     //  */
     /*
     public function findByExampleField($value)

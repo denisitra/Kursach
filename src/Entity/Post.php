@@ -6,11 +6,13 @@ namespace App\Entity;
 
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\TaskRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\PostRepository")
  */
-class Task
+class Post
 {
 
     /**
@@ -50,10 +52,45 @@ class Task
     protected $tags;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="task")
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="post")
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
+
+
+    /**
+     * @var Comment[]|ArrayCollection
+     *
+     * @ORM\OneToMany(
+     *      targetEntity="Comment",
+     *      mappedBy="post",
+     * )
+     */
+    private $comments;
+
+
+    public function __construct()
+    {
+        $this->comments = new ArrayCollection();
+    }
+
+
+    public function getComments(): Collection
+    {
+        return $this->comments;
+    }
+    public function addComment(Comment $comment): void
+    {
+        $comment->setPost($this);
+        if (!$this->comments->contains($comment)) {
+            $this->comments->add($comment);
+        }
+    }
+    public function removeComment(Comment $comment): void
+    {
+        $this->comments->removeElement($comment);
+    }
+
 
     /**
      * @return string|null
@@ -63,10 +100,8 @@ class Task
         return $this->headline;
     }
 
-    /**
-     * @return string|null
-     */
-    public function setHeadline($headline)
+
+    public function setHeadline($headline) : void
     {
         $this->headline = $headline;
     }
@@ -79,10 +114,8 @@ class Task
         return $this->teaser;
     }
 
-    /**
-     * @return string|null
-     */
-    public function setTeaser($teaser)
+
+    public function setTeaser($teaser) :void
     {
         $this->teaser = $teaser;
     }
@@ -95,10 +128,8 @@ class Task
         return $this->text;
     }
 
-    /**
-     * @return string|null
-     */
-    public function setText($text)
+
+    public function setText($text) : void
     {
         $this->text = $text;
     }
@@ -108,7 +139,7 @@ class Task
         return $this->image;
     }
 
-    public function setImage($image)
+    public function setImage($image) : void
     {
         $this->image = $image;
     }
@@ -121,10 +152,8 @@ class Task
         return $this->tags;
     }
 
-    /**
-     * @return string|null
-     */
-    public function setTags($tags)
+
+    public function setTags($tags) : void
     {
         $this->tags = $tags;
     }

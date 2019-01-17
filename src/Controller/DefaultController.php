@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Controller;
 
-use App\Entity\Task;
+use App\Entity\Post;
 use App\Entity\User;
-use App\Repository\TaskRepository;
+use App\Repository\PostRepository;
 use phpDocumentor\Reflection\Types\This;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -25,7 +27,7 @@ class DefaultController extends AbstractController
     public function new ( Request $request )
     {
         // just setup a fresh $task object (remove the dummy data)
-        $tsk = new Task ();
+        $tsk = new Post();
 
         $form = $this -> createFormBuilder ( $tsk )
             -> add ( 'headline' , TextType :: class)
@@ -57,13 +59,13 @@ class DefaultController extends AbstractController
 
     /**
      * @param $id
-     * @param TaskRepository $taskRepository
+     * @param PostRepository $postRepository
      * @return \Symfony\Component\HttpFoundation\Response
      * @Route("/posts/{id}", name="posts_show")
      */
-    public function show($id,TaskRepository $taskRepository)
+    public function show($id,PostRepository $postRepository)
     {
-        $posts = $taskRepository->findAll(['id'=>$id]);
+        $posts = $postRepository->findAll(['id'=>$id]);
 
         if (!$posts) {
             throw $this->createNotFoundException(
@@ -72,6 +74,7 @@ class DefaultController extends AbstractController
         }
         return $this->render('allposts/allposts.html.twig', ['posts' => $posts]);
     }
+
 
 
 

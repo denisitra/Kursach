@@ -6,7 +6,7 @@
 {% endblock %}
 {% block body %}
 
-{% include  "header.html.twig"%}
+    {% include "header.html.twig"%}
 
     <main>
         <div class="container ">
@@ -17,10 +17,21 @@
                     </div>
                 </div>
                 <div>
+                    <h2 >{{ post.user.firstName }} {{ post.user.lastName }} </h2>
+                    {% if post.user.followers.contains(app.user) == false %}
+                        <a href="{{ path('following_follow', {'id': post.user.id}) }}"
+                           class="btn btn-outline-primary">Follow</a>
+                    {% else %}
+                        <a href="{{ path('following_unfollow', {'id': post.user.id}) }}"
+                           class="btn btn-outline-danger">Unfollow</a>
+                    {% endif %}
+                </div>
 
-                    <h3 class="headline">
-                        {{ post.headline }}
-                    </h3>
+                <span class="headline">
+{{ post.headline }}
+</span>
+
+                <div>
                     <span class="teaser badge badge-secondary">{{ post.teaser }}</span>
                     <span class="tags badge badge-secondary">{{ post.tags }}</span>
 
@@ -32,9 +43,6 @@
         </div>
     </main>
 
-
-
-
-    {% include  "footer.html.twig"%}
+    {% include "footer.html.twig"%}
 
 {% endblock %}
