@@ -117,11 +117,6 @@ class User implements UserInterface
      */
     private $is_blogger;
 
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Like", mappedBy="user")
-     */
-    private $likes;
-
 
 
     /**
@@ -175,12 +170,7 @@ class User implements UserInterface
 
         return array_unique($roles);
 
-        /*if ($this->getIsBlogger == true){
-            return ['ROLE_USER'];
-        }
-        else{
-            return ['ROLE_BLOGGER'];
-        }*/
+
     }
 
     public function setRoles(array $roles): self
@@ -291,37 +281,6 @@ class User implements UserInterface
     public function setIsBlogger(?bool $is_blogger): self
     {
         $this->is_blogger = $is_blogger;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Like[]
-     */
-    public function getLikes(): Collection
-    {
-        return $this->likes;
-    }
-
-    public function addLike(Like $like): self
-    {
-        if (!$this->likes->contains($like)) {
-            $this->likes[] = $like;
-            $like->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeLike(Like $like): self
-    {
-        if ($this->likes->contains($like)) {
-            $this->likes->removeElement($like);
-            // set the owning side to null (unless already changed)
-            if ($like->getUser() === $this) {
-                $like->setUser(null);
-            }
-        }
 
         return $this;
     }

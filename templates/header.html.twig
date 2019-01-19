@@ -27,8 +27,18 @@
              <a href="/posts/1">All posts</a>
              <a href="/popular">Popular</a>
              <a href="/preferences/{id}">Preferences</a>
+             {% if is_granted('ROLE_BLOGGER') %}
              <a href="/postss/2">My posts</a>
+             {% endif %}
+             {% if is_granted('ROLE_USER', 'ROLE_BLOGGER') == false %}
+             <a href="/postss/2">My posts</a>
+             {% endif %}
+             {% if is_granted('ROLE_BLOGGER') %}
              <a href="/create_post">Create new post</a>
+             {% endif %}
+             {% if is_granted('ROLE_USER', 'ROLE_BLOGGER') == false %}
+             <a href="/create_post">Create new post</a>
+             {% endif %}
          </div>
 
 

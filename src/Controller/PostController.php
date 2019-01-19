@@ -34,30 +34,26 @@ class PostController extends AbstractController
 //        $like = $likeRepository->findAll();
         $post=$postRepository->find($id);
         $comments = $post->getComments()->toArray();
-        $like = $post->getLikes()->toArray();
+   //     $like = $post->getLikes();
 //        $like = $this->getDoctrine()
 //                      ->getRepository(Like::class)
 //                      ->findOneBy(['user' => $this->getUser()->getId(), 'post' => $post->getId()]);
 
-        $like = $this->getUser()->getLikes();
+     //   $like = $this->getUser()->getLikes();
 
 
-        dump($like);
-        die;
-        if ($this->getUser() == $likes->getUser() && $post == $likes->getPost()){
-
-        }
 
 
 //        $like = new Like();
 //        $like->setIsLiked(true);
 //        $like->setPost($post);
 //        $like->addUser($this->getUser());
+
         return $this->render(
       "post/post.html.twig", [
                 'post'=>$post,
                 'comments' => $comments,
-                'like' => $like
+              //  'like' => $like
             ]);
     }
 

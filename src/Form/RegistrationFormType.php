@@ -36,7 +36,11 @@ class RegistrationFormType extends AbstractType
                 ],
             ])
             ->add('firstName')
-            ->add('lastName');
+            ->add('lastName')
+            ->add('isBlogger', CheckboxType::class, [
+                'label' => 'I want to be a blogger ',
+                'required' => false
+            ] );
     }
 
     public function configureOptions(OptionsResolver $resolver)

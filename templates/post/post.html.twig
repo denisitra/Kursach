@@ -7,20 +7,22 @@
 {% block body %}
 
     {% include "header.html.twig"%}
-    {{ dump(like) }}
 
-    <main>
+    <main >
         <div class="container ">
-            <div class="project project-default">
+            <div  style="margin-bottom: 3%" class="post project-default">
                 <div class="shape">
                     <div class="shape-text">
                         Post
                     </div>
                 </div>
+
+
+                {% if is_granted('ROLE_USER') %}
                 <div>
                     <h2 >{{ post.user.firstName }} {{ post.user.lastName }} </h2>
                     {% if post.user.followers.contains(app.user) == false %}
-                        <a href="{{ path('following_follow', {'id': post.user.id}) }}"
+                        <a href="{{ path('following_follow', {'id': post.user.  id}) }}"
                            class="btn btn-outline-primary">Follow</a>
                     {% else %}
                         <a href="{{ path('following_unfollow', {'id': post.user.id}) }}"
@@ -28,6 +30,8 @@
                     {% endif %}
                     <button type="button" class="btn btn-primary" id="like">Like</button>
                 </div>
+                {% endif %}
+
 
                 <span class="headline">
                    {{ post.headline }}
@@ -42,18 +46,36 @@
                     </p>
                 </div>
             </div>
-            <div class = "add_comment">
-                <input type = "text">
-                <input type = "submit" value = "Add comment" data-id = {{ post.id }}>
-            </div>
-            <div class = "comment">
+
+
+            {% for comment in comments %}
+
+        <div class="card" style="margin-bottom: 2%">
+                <div class="media d-block d-md-flex mt-1">
+                    <img class="d-flex mx-auto " height="100px" style="border-radius: 45px; padding: 1%" src="https://mdbootstrap.com/img/Photos/Avatars/img (20).jpg" alt="Generic placeholder image">
+                    <div class="media-body text-center text-md-left ml-md-3 ml-0">
+                        <h5 class="mt-0 font-weight-bold" style="padding-top: 1%">{{ comment.user.firstName }} {{ comment.user.lastName }}</h5>
+                        <h5>{{ comment.text }}</h5>
+                    </div>
+                </div>
+        </div>
+
+            {% endfor  %}
+
+            <div style="margin-bottom: 5%">
 
             </div>
+            {% if is_granted('ROLE_USER') %}
+                <div>
+                    <input  style="margin-top: 3%; padding-bottom: 3%; padding-top: 1%" type="text" placeholder="Add comment" class="form-control" >
+                    <input style="margin-bottom: 10%; margin-top: 1%" class="btn btn-primary" type = "submit" value = "Add" data-id = {{ post.id }}>
+                </div>
+            {% endif %}
+
+
         </div>
     </main>
-    {% for comment in comments %}
 
-    {% endfor  %}
 
     <script>
 
@@ -82,9 +104,7 @@
                 url: url,
                 data: JSON.stringify(data),
                 type: "POST"
-            }).done(function() {
-                alert('done');
-            });
+            })
         })
 
     </script>

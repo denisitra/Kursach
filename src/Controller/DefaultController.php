@@ -9,14 +9,14 @@ use App\Entity\User;
 use App\Repository\PostRepository;
 use phpDocumentor\Reflection\Types\This;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
-
-class DefaultController extends AbstractController
+class DefaultController extends Controller
 {
 
     /**
@@ -26,7 +26,7 @@ class DefaultController extends AbstractController
      */
     public function new ( Request $request )
     {
-        // just setup a fresh $task object (remove the dummy data)
+// just setup a fresh $task object (remove the dummy data)
         $tsk = new Post();
 
         $form = $this -> createFormBuilder ( $tsk )
@@ -34,7 +34,6 @@ class DefaultController extends AbstractController
             -> add ( 'teaser' , TextType :: class)
             -> add ( 'text' , TextareaType :: class)
             -> add ( 'tags' , TextType :: class)
-            -> add('image', FileType::class)
             -> getForm ();
 
         $form -> handleRequest ( $request );
@@ -46,7 +45,6 @@ class DefaultController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($tsk);
             $entityManager->flush();
-
 
             return $this -> redirectToRoute ( 'post' );
         }
@@ -63,7 +61,7 @@ class DefaultController extends AbstractController
      * @return \Symfony\Component\HttpFoundation\Response
      * @Route("/posts/{id}", name="posts_show")
      */
-    public function show($id,PostRepository $postRepository)
+    public function show($id,PostRepository $postRepository,Request $request)
     {
         $posts = $postRepository->findAll(['id'=>$id]);
 
@@ -72,10 +70,13 @@ class DefaultController extends AbstractController
                 'No product found for id '.$id
             );
         }
-        return $this->render('allposts/allposts.html.twig', ['posts' => $posts]);
+
+        $paginator = $this->get('knp_paginator');
+        $result = $paginator->paginate(
+            $posts,
+            $request->query->getInt('page', 1), 6
+        );
+        return $this->render('allposts/allposts.html.twig', ['posts' => $result]);
     }
-
-
-
 
 }

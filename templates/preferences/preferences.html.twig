@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}All posts{% endblock %}
+{% block title %}Preferences{% endblock %}
 
 {% block head_css %}
 {% endblock %}
@@ -35,6 +35,9 @@
         </div>
 
     {% endfor %}
+    <div style="margin-bottom: 4%; margin-left: 40%" class="footer navigation">
+        {{ knp_pagination_render(posts) }}
+    </div>
 
     {% include "footer.html.twig"%}
 

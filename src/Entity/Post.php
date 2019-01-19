@@ -41,11 +41,6 @@ class Post
     protected $text;
 
     /**
-     * @ORM\Column()
-     */
-    protected $image;
-
-    /**
      * @Assert\NotBlank
      * @ORM\Column(type="string", length=180)
      */
@@ -69,19 +64,13 @@ class Post
      */
     private $comments;
 
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Like", mappedBy="post")
-     */
-    private $likes;
-
 
 
 
     public function __construct()
     {
         $this->comments = new ArrayCollection();
-        $this->isLiked = new ArrayCollection();
-        $this->likes = new ArrayCollection();
+     //   $this->isLiked = new ArrayCollection();
     }
 
 
@@ -89,6 +78,7 @@ class Post
     {
         return $this->comments;
     }
+
     public function addComment(Comment $comment): void
     {
         $comment->setPost($this);
@@ -138,20 +128,9 @@ class Post
         return $this->text;
     }
 
-
     public function setText($text) : void
     {
         $this->text = $text;
-    }
-
-    public function getImage()
-    {
-        return $this->image;
-    }
-
-    public function setImage($image) : void
-    {
-        $this->image = $image;
     }
 
     /**
@@ -180,37 +159,6 @@ class Post
     public function setUser(User $user): self
     {
         $this->user = $user;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Like[]
-     */
-    public function getLikes(): Collection
-    {
-        return $this->likes;
-    }
-
-    public function addLike(Like $like): self
-    {
-        if (!$this->likes->contains($like)) {
-            $this->likes[] = $like;
-            $like->setPost($this);
-        }
-
-        return $this;
-    }
-
-    public function removeLike(Like $like): self
-    {
-        if ($this->likes->contains($like)) {
-            $this->likes->removeElement($like);
-            // set the owning side to null (unless already changed)
-            if ($like->getPost() === $this) {
-                $like->setPost(null);
-            }
-        }
 
         return $this;
     }

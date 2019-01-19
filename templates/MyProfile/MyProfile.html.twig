@@ -7,11 +7,16 @@
     {% include "header.html.twig"%}
 
     {{ form_start(registrationForm) }}
+
+
+
     <div class="container col-lg-4">
         <div class="my_profile">
             <label>{{ UserInfo.firstName }} </label>
             <label>{{ UserInfo.lastName }} </label>
             <a href="/edit/{{ UserInfo.id}}">Edit</a>
+            <label>{{ UserInfo.about }}</label>
+
         </div>
 
         <div class="text_area">

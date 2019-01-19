@@ -15,7 +15,6 @@
 
 .project {
     height: 300px;
-
  }
 
 .project{
@@ -23,6 +22,10 @@
     padding: 10px;
 }
 
+.post{
+    background:#fff; border:1px solid #ddd; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); overflow:hidden;
+    padding: 10px;
+}
 
 .project-default {    border-color: #999999; }
 .project-default .shape{

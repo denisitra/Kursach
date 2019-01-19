@@ -6,11 +6,11 @@ use App\Entity\User;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-/**
- * Class FollowingController
- * @package App\Controller
- * @Route("/following")
- */
+    /**
+     * Class FollowingController
+     * @package App\Controller
+     * @Route("/following")
+     */
 class FollowingController extends AbstractController
 {
     /**
@@ -25,10 +25,11 @@ class FollowingController extends AbstractController
 
         return $this->redirectToRoute(
             "post_show",
-            ['user' => $userFollow->getUsername(),
-                'id'=>$id]
+            ['id'=>$id]
         );
     }
+
+
     /**
      * @Route("/unfollow/{id}", name="following_unfollow")
      */
@@ -43,8 +44,7 @@ class FollowingController extends AbstractController
 
         return $this->redirectToRoute(
             "post_show",
-            ['user' => $userToUnfollow->getUsername(),
-                'id'=>$id]
+            ['id'=>$id]
         );
     }
 }
